@@ -23,7 +23,7 @@ namespace ArrayExercises
             {
                 if (anInt%2 != 0)
                 {
-                Console.WriteLine(anInt);
+                    Console.WriteLine(anInt);
                 }
             }
         }
