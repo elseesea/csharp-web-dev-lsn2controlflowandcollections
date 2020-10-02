@@ -7,28 +7,35 @@ namespace DictionaryExercises
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello World!");
+            Dictionary<string, int> students = new Dictionary<string, int>();
 
-            List<string> students = new List<string>();
+            //List<string> students = new List<string>();
             List<double> grades = new List<double>();
             string newStudent;
+            int newStudentID;
             string input;
 
-            Console.WriteLine("Enter your students (or ENTER to finish):");
 
             // Get student names
             do
             {
+                Console.WriteLine("Enter a student (or ENTER to finish):");
                 input = Console.ReadLine();
                 newStudent = input;
 
                 if (!Equals(newStudent, ""))
                 {
-                    students.Add(newStudent);
+
+                    Console.WriteLine("Enter student ID:");
+                    input = Console.ReadLine();
+                    newStudentID = int.Parse(input);
+                    students.Add(newStudent, newStudentID);
+
                 }
 
             } while (!Equals(newStudent, ""));
 
+/*
             // Get student grades
             foreach (string student in students)
             {
@@ -37,19 +44,16 @@ namespace DictionaryExercises
                 double grade = Double.Parse(input);
                 grades.Add(grade);
             }
+*/
 
             // Print class roster
             Console.WriteLine("\nClass roster:");
             double sum = 0.0;
 
-            for (int i = 0; i < students.Count; i++)
+            foreach (KeyValuePair<string, int> student in students)
             {
-                Console.WriteLine(students[i] + " (" + grades[i] + ")");
-                sum += grades[i];
+                    Console.WriteLine(student.Key + " (" + student.Value + ")");
             }
-
-            double avg = sum / students.Count;
-            Console.WriteLine("Average grade: " + avg);
         }
     }
 }
